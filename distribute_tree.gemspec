@@ -9,9 +9,16 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://github.com/SunshineLibrary/distribute_tree'
   s.license     = 'MIT'
 
+  s.files         = `git ls-files`.split("\n")
+  s.test_files    = `git ls-files -- test/{functional,unit}/*`.split("\n")
+  s.require_paths = ["lib"]
+
   s.add_dependency "rails"
   s.add_dependency "haml"
   s.add_dependency "resque"
+
+  s.add_development_dependency 'pry-debugger'
+  s.add_development_dependency 'guard-test'
 
   s.files = `git ls-files`.split("\n")
 end
