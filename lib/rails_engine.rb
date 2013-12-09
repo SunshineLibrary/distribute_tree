@@ -3,7 +3,7 @@
 module DistributeTree
 
   class Engine < Rails::Engine
-    initializer "distribute_tree.load_app_instance_data" do |app|
+    initializer "distribute_tree.load_engine" do |app|
       app.class.configure do
         ['app/assets', 'app/controllers', 'app/views'].each do |path|
           config.paths[path] ||= []

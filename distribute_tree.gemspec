@@ -13,12 +13,17 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- test/{functional,unit}/*`.split("\n")
   s.require_paths = ["lib"]
 
-  s.add_dependency "rails"
-  s.add_dependency "haml"
+  s.add_dependency "rails", ">= 3.2"
+  s.add_dependency 'haml-rails'
   s.add_dependency "resque"
+  s.add_dependency "mongoid"
 
   s.add_development_dependency 'pry-debugger'
   s.add_development_dependency 'guard-test'
+  s.add_development_dependency 'mongoid-rspec'
+  s.add_development_dependency 'capybara'
+  s.add_development_dependency 'factory_girl_rails'
+  s.add_development_dependency 'database_cleaner'
 
   s.files = `git ls-files`.split("\n")
 end
