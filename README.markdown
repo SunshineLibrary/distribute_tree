@@ -37,12 +37,14 @@ RAILS_ENV=production bundle exec rake resque:work QUEUE='cloud_distribute_tree' 
 
 优点:
 
-1. 高性能
+1. RabbitMQ高性能
+2. 引入基于JSON格式的API在不同系统间同步，并分成元数据和File两种数据类型分别分发。
 
 缺点：
 
 1. 按订阅全部同步，容易造成VPN网络堵塞。虽然可以改成点对点发送，但也失去了用rabbitmq的必要。
 2. 无细力度的UI，不透明。这个开发难度比 resque 高，且是另外一套系统。
+3. 无法管理细力度的失败的同步。
 
 #### 第三代(resque)
 架构：基于resque队列系统。队列可视化，rails风格。
