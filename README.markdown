@@ -47,7 +47,7 @@ RAILS_ENV=production bundle exec rake resque:work QUEUE='cloud_distribute_tree' 
 3. 无法管理细力度的失败的同步。
 
 #### 第三代(resque)
-架构：基于resque队列系统。队列可视化，rails风格。
+架构：基于resque队列系统。队列可视化，rails风格。从优点上继承了上代的RabbitMQ架构。
 
 A. 初始化同步，或者中途中断后同步， cloud -> local。
 

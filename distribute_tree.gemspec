@@ -1,10 +1,12 @@
+# encoding: UTF-8
+
 Gem::Specification.new do |s|
   s.name        = 'distribute_tree'
   s.version     = '0.0.1'
   s.date        = '2013-12-04'
   s.summary     = File.read("README.markdown").split(/===+/)[1].strip.split("\n")[0]
   s.description = s.summary
-  s.authors     = ["David Chen"]
+  s.authors     = ["mvj3", "ukisami", "renchaorevee"]
   s.email       = 'mvjome@gmail.com'
   s.homepage    = 'https://github.com/SunshineLibrary/distribute_tree'
   s.license     = 'MIT'
@@ -17,6 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'haml-rails'
   s.add_dependency "resque"
   s.add_dependency "mongoid"
+  s.add_dependency "mongoid_uuid_generator"
 
   s.add_development_dependency 'pry-debugger'
   s.add_development_dependency 'guard-test'

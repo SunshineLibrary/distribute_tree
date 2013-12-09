@@ -1,0 +1,38 @@
+.modal.hide.fade{ "aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+  %ul.items
+
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+    %h4.title
+      %span 分发
+      %span.count
+      %span 个资源到下列勾选服务器
+
+  .modal-body
+    = form_tag({controller: "distribute", action: "create"}, method: "post", class: "form-horizontal") do
+      %div
+        %table.table.table-striped
+          %tbody
+            %tr
+              %th.span5.uuid.hide UUID
+              %th.span3 服务器
+              // %th.span2 服务器状态
+              %th.span2 分发
+            - @schools.each do |school|
+              %tr
+                %td.uuid.hide= school.uuid
+                %td= link_to school.name, school_path(school.uuid)
+                %td= check_box_tag(school.uuid)
+
+  .modal-footer
+    %button.submit.btn.btn-primary{:class => 'save-button', "data-loading-text" => "分发中…" } 分发
+    %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} 取消
+
+  .alert.hide
+    %div.alert
+      %a.close{'data-dismiss' => 'alert'} x
+      %div#flash_notice
+        %span.status
+        %span 请前往
+        = link_to "同步队列", "/resque/queues/#{Mongoid::DistributeTree.default_queue}"
+        %span 察看最新状态
